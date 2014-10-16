@@ -1,0 +1,38 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	
+	</ui:style>
+	<g:DockLayoutPanel unit="EM">
+		<g:north size="2">
+			<g:DockLayoutPanel unit="EM">
+			<g:east size="15">
+				<g:HorizontalPanel width="100%">
+			<g:Button ui:field="timelineButton">Timeline</g:Button>
+			<g:Label>Info</g:Label>
+				</g:HorizontalPanel>
+			</g:east>
+			</g:DockLayoutPanel>
+		</g:north>
+	    <g:center>
+	    <g:DockLayoutPanel unit="EM">
+	    <g:center>
+	    	<g:StackLayoutPanel unit="EM">
+	    		<g:stack>
+					<g:customHeader size="3">
+						<g:Label>Was ist eine Zeitreihe</g:Label>
+					</g:customHeader>
+					<g:Label>
+						Hier ist eine Zeitreie eine Zuordnung, von einem Datum zu einem Wert, für ein bestimmtes Wort.
+						Der Wert repräsentiert das Verhältnis zwischen der absoluten Häufigkeit des auftretens des bestimmten Wortes, zu der absoluten Häufigkeit des Wortes "der" an einem bestimmten Datum.
+					</g:Label>
+	    		</g:stack>
+	    	</g:StackLayoutPanel>
+	    	</g:center>
+	    	<g:east size="20"><g:Label></g:Label></g:east>
+	    	<g:west size="20"><g:Label></g:Label></g:west>
+	    </g:DockLayoutPanel>
+	    </g:center>
+	</g:DockLayoutPanel>
+</ui:UiBinder> 

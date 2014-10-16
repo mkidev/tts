@@ -1,0 +1,154 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:c="urn:import:com.google.gwt.user.cellview.client"
+    xmlns:v="urn:import:com.google.gwt.visualization.client.visualizations"
+    xmlns:dp="urn:import:com.google.gwt.user.datepicker.client">
+<ui:style>
+.important { font-weight: bold; }
+.cellList > div > div > div { display: inline; }
+.header {
+	text-align: center;
+	left: 45%;
+}
+.table td{
+	border: 1px solid black;
+	width:100%;
+}
+.kraken {
+	align: center;
+	}
+	.head {
+	text-align: center;
+	left: 45%;
+	background-color: #f2f2f2;
+		}
+.table {
+	width:100%;
+	}
+.errorStyle {
+	background-color: red;	
+}
+.infoArea {
+		border: 1px solid black;
+}
+</ui:style>
+	<g:DockLayoutPanel unit="EM">
+		<g:north size="2">
+			<g:DockLayoutPanel unit="EM">
+			<g:east size="15">
+				<g:HorizontalPanel width="100%" styleName="{style.infoArea}">
+					<g:Label>Timelines</g:Label>
+					<g:Button ui:field="infoButton">Info</g:Button>
+				</g:HorizontalPanel>
+			</g:east>
+			</g:DockLayoutPanel>
+		</g:north>
+		<g:north size ="7">  
+			<g:VerticalPanel width="100%">
+				<g:HorizontalPanel width ="100%" horizontalAlignment="CENTER">
+				<g:HorizontalPanel styleName="{style.infoArea}">
+					<g:Label> Word: </g:Label>
+			   		<g:SuggestBox ui:field="searchBox"></g:SuggestBox>
+			    	<g:Button text="Add" ui:field="addWordButton"></g:Button>
+			    	<c:CellTable ui:field="wordCellTable"></c:CellTable>
+				</g:HorizontalPanel>
+				</g:HorizontalPanel>
+			</g:VerticalPanel> 
+	<!--				<g:HorizontalPanel>
+						<dp:DateBox ui:field="dateBox"></dp:DateBox>
+						<g:Label> +/- Days:</g:Label>
+						<g:IntegerBox ui:field="dateAddSubBox" text="15"></g:IntegerBox>
+					</g:HorizontalPanel> -->
+		</g:north>
+		<g:east size="20">
+			<g:DockLayoutPanel unit="EM">
+				<g:north size="2.3">
+					<g:Label  styleName="{style.head}">Peak-Search</g:Label>
+				</g:north>
+				<g:center>
+					<g:DockLayoutPanel unit="EM">
+						<g:north size="6">
+							<g:DecoratorPanel>
+								<g:VerticalPanel styleName="{style.header}" horizontalAlignment="CENTER">
+									<g:HorizontalPanel styleName="{style.kraken}" width="100%">
+										<g:Label>Date:</g:Label>
+										<g:HorizontalPanel horizontalAlignment="RIGHT" width="100%">
+										<dp:DateBox ui:field="dateBox" ></dp:DateBox>
+										</g:HorizontalPanel>
+									</g:HorizontalPanel>
+									<g:HorizontalPanel styleName="{style.kraken}">
+										<g:Label> +/- Days:</g:Label>
+										<g:IntegerBox ui:field="dateAddSubBox" text="15"></g:IntegerBox>
+									</g:HorizontalPanel>
+									<g:Button text="Search!" ui:field="peakSearch"></g:Button>
+								</g:VerticalPanel>
+							</g:DecoratorPanel>	
+						</g:north>	
+					<g:center>	
+						<g:DockLayoutPanel ui:field="peakChartPanel"></g:DockLayoutPanel>
+			<!--<g:ScrollPanel>
+				<g:FlexTable ui:field="timeWordDataFlexTable"></g:FlexTable>
+			</g:ScrollPanel> -->
+					</g:center>
+				</g:DockLayoutPanel>
+		</g:center>
+		</g:DockLayoutPanel>
+		</g:east>
+		<g:center>
+		<g:StackLayoutPanel unit="EM" ui:field="bigStackLayoutPanel">
+		<g:stack>
+		<g:customHeader size="2.3"><g:Label>Graph</g:Label></g:customHeader>
+			<g:DockLayoutPanel ui:field="timelinePanel" unit="EM">
+			<g:east size="8">
+				<g:HTMLPanel>
+		    		<g:Label>Period: </g:Label>
+		    		<g:DecoratorPanel>
+		    		<g:VerticalPanel>
+		    		<g:RadioButton name="period" ui:field="radioDaily">Daily</g:RadioButton>
+		    		<g:RadioButton name="period" ui:field="radioWeekly">Weekly</g:RadioButton>
+			    	<g:RadioButton name="period" ui:field="radioMonthly">Monthly</g:RadioButton>
+			    	<g:RadioButton name="period" ui:field="radioYearly">Yearly</g:RadioButton>
+			    	</g:VerticalPanel>
+			    	</g:DecoratorPanel>
+	    		</g:HTMLPanel>
+			</g:east>
+			</g:DockLayoutPanel>
+		<!-- 		<g:tab>
+					<g:header size="7">Time Data</g:header>
+					<g:ScrollPanel>
+					<g:HTMLPanel>
+						<g:FlexTable ui:field="timeWordDataFlexTable"></g:FlexTable>
+					</g:HTMLPanel>
+					</g:ScrollPanel>
+				</g:tab> -->
+				</g:stack>
+				 <g:stack>
+	    	<g:customHeader size="2.3"><g:Label>Tables</g:Label></g:customHeader>
+	    	<g:DockLayoutPanel unit="EM">
+	    		<g:north size="2">
+	    		<g:HTMLPanel width="100%">
+	    			<g:HorizontalPanel styleName="{style.header}" >
+	    				<g:Button text="-" ui:field="buttonDateLast"></g:Button>
+	    				<g:Label text="" ui:field="labelTableDate"></g:Label>
+	    				<g:Button text="+" ui:field="buttonDateNext"></g:Button>
+	    			</g:HorizontalPanel>
+	    		</g:HTMLPanel>
+	    		</g:north>
+	    		<g:west size="15">
+	    		<g:DockLayoutPanel ui:field="kookChartPanel"></g:DockLayoutPanel>
+	    		<!-- <g:ScrollPanel>
+	    			<g:FlexTable ui:field="flexTableKook" styleName="{style.table}"></g:FlexTable>
+	    		</g:ScrollPanel>	 -->
+	    		</g:west>
+	    		<g:center>
+	    			<g:ScrollPanel>
+	    			<g:FlexTable ui:field="flexTableSent" styleName="{style.table}"></g:FlexTable>
+	    			</g:ScrollPanel>
+	    		</g:center>
+	    	</g:DockLayoutPanel>
+	    </g:stack>
+				</g:StackLayoutPanel>
+		</g:center>
+		
+	</g:DockLayoutPanel>
+</ui:UiBinder> 
